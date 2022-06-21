@@ -4,15 +4,15 @@ class Windmill {
         this.generateFans(numFans, frictionFactor);
     }
 
-    show(x, y) {
-        push();
-        translate(x, y);
-        line(0, 0, 0, -this.windmillSize);
+    show(x, y, graphics) {
+        graphics.push();
+        graphics.translate(x, y);
+        graphics.line(0, 0, 0, -this.windmillSize);
 
         for (let fan of this.fans) {
-            fan.show(0, -this.windmillSize);
+            fan.show(0, -this.windmillSize, graphics);
         }
-        pop();
+        graphics.pop();
     }
 
     update() {

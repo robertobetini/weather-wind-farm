@@ -7,12 +7,12 @@ class Fan {
         this.frictionFactor = frictionFactor;
     }
 
-    show(x, y) {
-        push();
-        translate(x, y);
-        rotate(this.angle);
-        line(0, 0, 0, this.size);
-        pop();
+    show(x, y, graphics) {
+        graphics.push();
+        graphics.translate(x, y);
+        graphics.rotate(this.angle);
+        graphics.line(0, 0, 0, this.size);
+        graphics.pop();
     }
 
     update() {

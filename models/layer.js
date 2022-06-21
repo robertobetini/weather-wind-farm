@@ -1,5 +1,6 @@
 class Layer {
     constructor(floorEquation) {
+        this.graphics = createGraphics(width, height);
         this.windmills = [];
         this.floor = [];
         for (let x = 0; x < width; x++) {
@@ -7,15 +8,17 @@ class Layer {
         }
     }
 
-    show() {
+    draw() {
+        this.graphics.clear();
         this.showFloor();
         this.showWindmills();
+        return this.graphics;
     }
 
     showFloor() {
         for (let x = 0; x < width; x++) {
             let y = this.floor[x];
-            point(x, y);
+            this.graphics.point(x, y);
         }
     }
 
@@ -24,7 +27,7 @@ class Layer {
         for (let i = 0; i < this.windmills.length; i++) {
             let x = xOffset * (i + 1);
             let y = this.floor[x];
-            this.windmills[i].show(x, y);
+            this.windmills[i].show(x, y, this.graphics);
         }
     }
 
