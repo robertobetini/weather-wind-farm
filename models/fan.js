@@ -1,5 +1,5 @@
 class Fan {
-    constructor(fanSize, angle, frictionFactor = 0.995) {
+    constructor(fanSize, angle, frictionFactor) {
         this.size = fanSize;
         this.angle = angle;
         this.angularSpeed = 0;

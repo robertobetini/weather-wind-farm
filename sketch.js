@@ -1,30 +1,29 @@
 const WINDMILL_SIZE = 150;
 const FAN_SIZE = 50;
 
-let windmill;
+let layer;
 let numFans = 3;
-let angularSpeed = 0.01;
+let numWindmills = 2;
 
 function setup() {
   	createCanvas(600, 600);
+	const floorEquation = () => height - 30;
+	layer = new Layer(floorEquation);
 
-	let fans = [];
-	let angle = 0;
-	for(let i = 0; i < numFans; i++) {
-		fans.push(new Fan(FAN_SIZE, angle));
-		angle += TWO_PI / numFans;
+	for (let i = 0; i < numWindmills; i++) {
+		var frictionFactor = random(0.98, 0.998);
+		var windmill = new Windmill(WINDMILL_SIZE, numFans, frictionFactor);
+		layer.attach(windmill);
 	}
-
-	windmill = new Windmill(WINDMILL_SIZE, fans);
 }
   
 function draw() {
-	background(150, 125, 255);
-   	windmill.show(width/2, height);
+	background(153, 204, 255);
+   	layer.show();
 
 	if (mouseIsPressed){
-		windmill.applyWindForce(0.001);
+		layer.applyWindForce(0.001);
 	}
 
-	windmill.update();
+	layer.update();
 }
