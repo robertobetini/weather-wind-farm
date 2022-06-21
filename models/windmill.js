@@ -1,6 +1,7 @@
 class Windmill {
-    constructor(windmillSize, numFans, frictionFactor = 0.995) {
+    constructor(windmillSize, numFans, fanSize, frictionFactor = 0.995) {
         this.windmillSize = windmillSize;
+        this.fanSize = fanSize;
         this.generateFans(numFans, frictionFactor);
     }
 
@@ -32,7 +33,7 @@ class Windmill {
 
         let angle = 0;
         for(let i = 0; i < numFans; i++) {
-            this.fans.push(new Fan(FAN_SIZE, angle, frictionFactor));
+            this.fans.push(new Fan(this.fanSize, angle, frictionFactor));
             angle += TWO_PI / numFans;
         }
     }
