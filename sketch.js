@@ -19,7 +19,8 @@ function setup() {
   
 function draw() {
 	background(153, 204, 255);
-   	layer.show();
+   	layerGraphics = layer.draw();
+	image(layerGraphics, 0, 0);
 
 	if (mouseIsPressed){
 		layer.applyWindForce(0.001);
