@@ -16,14 +16,22 @@ class Layer {
     }
 
     showFloor() {
+        push();
+        fill(75, 255, 120);
+        beginShape();
         for (let x = 0; x < width; x++) {
             let y = this.floor[x];
-            this.graphics.point(x, y);
+            this.graphics.vertex(x, y);
         }
+
+        vertex(width, height);
+        vertex(0, height);
+        endShape(CLOSE);
+        pop();
     }
 
     showWindmills() {
-        let xOffset = width / (this.windmills.length + 1);
+        let xOffset = Math.floor(width / (this.windmills.length + 1));
         for (let i = 0; i < this.windmills.length; i++) {
             let x = xOffset * (i + 1);
             let y = this.floor[x];
